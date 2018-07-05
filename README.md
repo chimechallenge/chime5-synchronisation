@@ -37,6 +37,8 @@ Kinect devices: [plots/align_S03_U.pdf](plots/align_S03_U.pdf)
 
 #### Notes
 
+- python3.6 or later is required
+
 - The output transcriptions appear in the directory `transcriptions_align`.
 
 - The script was initially run on the original CHiME-5 audio recordings before any redactions were made. For this reason when it is re-run on the distributed version of the CHiME-5 data it may produced some utterance timings that are different from those appearing in the distributed transcripts.

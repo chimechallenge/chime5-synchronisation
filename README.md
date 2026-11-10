@@ -37,7 +37,8 @@ Kinect devices: [plots/align_S03_U.pdf](plots/align_S03_U.pdf)
 
 #### Notes
 
-- python3.6 or later is required
+- Use Python 3.8 with the pinned requirements. NumPy 1.22.0 requires Python
+  3.8 or later; this legacy dependency set has been checked on Python 3.8.
 
 - The output transcriptions appear in the directory `transcriptions_align`.
 

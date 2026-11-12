@@ -22,14 +22,41 @@ CHIME_DATA = tu.chime_data()
 def correct_time_linear(time_to_correct, linear_fit):
     """Adjust the time using a linear fit of time to lag."""
     corrected = time_to_correct - linear_fit * time_to_correct
-    return corrected
+    return round_to_sample(corrected)
 
 
 def correct_time_mapping(time_to_correct, linear_fit, times, lags):
     """Adjust the time using a linear fit + a mapping from time to lag."""
     corrected = np.interp(time_to_correct + linear_fit * time_to_correct,
                           np.array(times) + lags, np.array(times))
-    return corrected
+    return round_to_sample(corrected)
+
+
+def round_to_sample(time_in_seconds, sample_rate=16000):
+    """
+
+    Args:
+        time_in_seconds:
+        sample_rate:
+
+    Returns:
+        time_in_seconds rounded such that time_in_seconds * sample_rate is an
+        integer
+
+
+    >>> 1 / 16000 - 0.000_062_5
+    0.0
+    >>> round_to_sample(1)
+    1.0
+    >>> round_to_sample(1.000_031_25)
+    1.0
+    >>> round_to_sample(1.000_031_26)
+    1.0000625
+    >>> round_to_sample(1.000_062_5)
+    1.0000625
+
+    """
+    return np.round(time_in_seconds * sample_rate) / sample_rate
 
 
 def align_kinect(kinect, transcription, align_data):

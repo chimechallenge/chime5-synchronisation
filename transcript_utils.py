@@ -37,7 +37,7 @@ def time_float_to_text(time_float):
     time_float %= 3600
     minutes = int(time_float/60)
     seconds = time_float % 60
-    return f'{hours}:{minutes:02d}:{seconds:05.2f}'
+    return f'{hours}:{minutes:02d}:{seconds:05.7f}'
 
 
 def load_transcript(session, root, convert=False):
